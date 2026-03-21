@@ -1,8 +1,7 @@
-📊 Customer Subscription Churn and Usage Pattern Analysis
+# 📊 **Customer Subscription Churn and Usage Pattern Analysis**
 
-Group Number: 06
-
-Members:
+## **Group Number: 06**
+### **Members:**
 Shreya Waghmode – PRN: 25070123159
 Kahaan Shah – PRN: 25070123060
 
