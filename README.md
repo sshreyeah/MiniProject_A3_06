@@ -3,10 +3,10 @@
 ## **Group Number:** 06
 ### **Members:**
 
-* Shreya Waghmode
+* **Shreya Waghmode**
   PRN: 25070123159
 
-* Kahaan Shah
+* **Kahaan Shah**
   PRN: 25070123060
 
 ---
