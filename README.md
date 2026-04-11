@@ -111,7 +111,7 @@ To ensure all features contributed equally to the analysis, we applied two types
 
 -----
 
-## Final Conclusion
+## Conclusion
 
 The project successfully maps the journey of a "Churn-prone" customer: **Low engagement ➡️ Payment issues ➡️ Inactivity ➡️ Cancellation.** **Business Recommendation:** Implement a "Red Flag" system for users whose weekly usage drops by 30% or more, particularly within their first year of subscription.
 
