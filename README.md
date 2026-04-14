@@ -113,7 +113,7 @@ To ensure all features contributed equally to the analysis, we applied two types
 
 ## Conclusion
 
-The project successfully maps the journey of a "Churn-prone" customer: **Low engagement ➡️ Payment issues ➡️ Inactivity ➡️ Cancellation.** **Business Recommendation:** Implement a "Red Flag" system for users whose weekly usage drops by 30% or more, particularly within their first year of subscription.
+The project successfully models the behavioral journey of a churn-prone customer, revealing a clear progression from declining engagement to payment-related issues, followed by inactivity and eventual subscription cancellation. The analysis highlights that customer churn is typically a gradual process influenced by reduced usage and unresolved transactional challenges rather than a sudden event. By identifying early warning indicators—particularly a weekly usage drop of 30% or more within the first year of subscription—the study emphasizes the importance of proactive monitoring systems. It is therefore recommended that businesses implement an automated "Red Flag" mechanism to detect such behavioral changes and trigger timely retention strategies such as personalized reminders, customer support outreach, or targeted incentives. Implementing these measures can significantly improve customer retention, enhance user satisfaction, and contribute to long-term business stability and revenue growth.
 
 -----
 
