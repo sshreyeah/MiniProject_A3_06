@@ -1,6 +1,8 @@
 # 📊 Customer Subscription Churn and Usage Pattern Analysis
 
-## 👥 Group Details
+---
+
+# 👥 Group Details
 
 **Group Number:** 06
 
@@ -16,7 +18,7 @@
 
 # 📌 Overview
 
-This project focuses on analyzing customer subscription data to understand usage behavior and identify patterns that lead to customer churn. Using Exploratory Data Analysis (EDA) techniques and statistical visualization, the study uncovers behavioral indicators that signal customer disengagement and eventual subscription cancellation. The insights generated support proactive business strategies aimed at improving customer retention and enhancing long-term revenue stability.
+This project focuses on analyzing customer subscription data to understand usage behavior and identify patterns that lead to customer churn. Using Exploratory Data Analysis (EDA) techniques and statistical visualization methods, the study uncovers behavioral indicators that signal customer disengagement and eventual subscription cancellation. The insights generated support proactive business strategies aimed at improving customer retention and enhancing long-term revenue stability.
 
 ---
 
@@ -52,14 +54,16 @@ To perform exploratory data analysis on customer subscription data and identify 
 | **last_login_days_ago**    | Numeric     | Days since last login                       |
 | **churn**                  | Categorical | Indicates whether customer churned (Yes/No) |
 
-### Dataset Summary
+---
 
-| Attribute       | Value                      |
-| --------------- | -------------------------- |
-| Total Records   | **2800**                   |
-| Total Features  | **10**                     |
-| Target Variable | **Churn**                  |
-| Dataset Type    | Customer Subscription Data |
+## Dataset Summary
+
+| Attribute       | Value                         |
+| --------------- | ----------------------------- |
+| Total Records   | **2800**                      |
+| Total Features  | **10**                        |
+| Target Variable | **Churn**                     |
+| Dataset Type    | Customer Subscription Dataset |
 
 ---
 
@@ -70,7 +74,7 @@ To perform exploratory data analysis on customer subscription data and identify 
 | Programming Language    | Python              |
 | Data Processing         | Pandas, NumPy       |
 | Visualization           | Matplotlib, Seaborn |
-| Statistical Analysis    | SciPy, NumPy        |
+| Statistical Methods     | NumPy, SciPy        |
 | Development Environment | Jupyter Notebook    |
 | Version Control         | Git & GitHub        |
 
@@ -78,7 +82,7 @@ To perform exploratory data analysis on customer subscription data and identify 
 
 # 📊 Executive Summary
 
-This project explores the behavioral and financial triggers that lead to customer attrition (churn). By analyzing a dataset of **2,800 users**, we applied rigorous statistical methods and visual encoding to identify why users stop subscribing and how businesses can intervene early. The analysis demonstrates that churn is typically preceded by declining engagement and transactional friction rather than sudden cancellation.
+This project explores the behavioral and financial triggers that lead to customer attrition (churn). By analyzing a dataset of **2,800 users**, we applied statistical preprocessing techniques and visualization strategies to understand why customers discontinue subscriptions. The analysis demonstrates that churn is typically preceded by declining engagement and transactional friction rather than sudden cancellation, allowing organizations to design preventive retention systems.
 
 ---
 
@@ -97,72 +101,216 @@ graph TD
 
 # 📚 Theoretical Foundations
 
-## 1️⃣ Data Cleaning & Integrity
-
-* **Missing Value Imputation:**
-  Mean Imputation was applied to maintain the central tendency of numerical features without reducing sample size.
-
-* **Logical Constraint Checking:**
-  Records violating logical relationships (e.g., Last Login exceeding Tenure) were removed to ensure dataset integrity.
+This project is grounded in statistical preprocessing, normalization theory, feature engineering principles, and visual analytics methods that ensure reliable interpretation of customer behavior patterns.
 
 ---
 
-## 2️⃣ Normalization Theory
+# 1️⃣ Data Cleaning & Integrity
 
-Two normalization methods were applied:
+## Missing Value Imputation
 
-### Standard Scaling (Z-Score)
+Missing numerical values were handled using **Mean Imputation**:
 
-Used to standardize usage-related features.
+```
+x̄ = ( Σ xi ) / n
+```
 
-[
-z = \frac{x - \mu}{\sigma}
-]
+Where:
 
-### Robust Scaling
+* x̄ = Mean value
+* xi = Individual observations
+* n = Number of observations
 
-Used for support-related variables using Median and IQR to reduce the impact of outliers.
+**Theory:**
+Mean imputation maintains dataset size while preserving central tendency.
 
 ---
 
-## 3️⃣ Visual Encoding & Statistical Logic
+## Logical Constraint Checking
 
-* **Kernel Density Estimation (KDE)**
-  Used to visualize probability distribution of user activity.
+Data consistency was validated using logical conditions:
 
-* **Correlation Heatmaps**
-  Pearson Correlation Coefficient used to detect linear relationships.
+```
+Last Login Days Ago ≤ Tenure Months × 30
+```
 
-* **Boxplots**
-  Applied 1.5 × IQR rule to detect anomalies.
+Invalid records violating logical relationships were removed.
+
+**Theory:**
+This ensures realistic behavior patterns and prevents incorrect model interpretation.
+
+---
+
+# 2️⃣ Normalization Theory
+
+Normalization ensures that variables measured on different scales contribute equally during analysis.
+
+---
+
+## 🔹 Standard Scaling (Z-Score Normalization)
+
+Applied to:
+
+* Weekly Usage
+* Monthly Fees
+
+Formula:
+
+```
+z = ( x − μ ) / σ
+```
+
+Where:
+
+* z = Standardized value
+* x = Original value
+* μ = Mean
+* σ = Standard deviation
+
+### Theoretical Importance
+
+Standard scaling:
+
+* Centers data at mean = 0
+* Sets standard deviation = 1
+* Improves comparability between features
+* Supports stable statistical calculations
+
+---
+
+## 🔹 Robust Scaling
+
+Used when data contains **outliers**.
+
+Formula:
+
+```
+x_scaled = ( x − Median ) / IQR
+```
+
+Where:
+
+```
+IQR = Q3 − Q1
+```
+
+* Q1 = First Quartile
+* Q3 = Third Quartile
+
+### Theoretical Importance
+
+Robust scaling:
+
+* Minimizes influence of extreme values
+* Maintains realistic distribution shape
+* Prevents distortion from abnormal usage behavior
+
+---
+
+# 3️⃣ Feature Engineering Theory
+
+Feature engineering improves interpretation and visualization clarity.
+
+---
+
+## Feature Binning
+
+Continuous values were grouped into meaningful categories.
+
+| Weekly Usage | Category |
+| ------------ | -------- |
+| 0–5 hrs      | Low      |
+| 5–15 hrs     | Medium   |
+| 15+ hrs      | High     |
+
+**Theory:**
+
+Feature binning:
+
+* Simplifies behavioral interpretation
+* Identifies threshold-based risk groups
+* Improves categorical comparison
+
+---
+
+# 4️⃣ Visual Encoding & Statistical Logic
+
+Statistical visualization techniques were applied to represent relationships accurately.
+
+---
+
+## Kernel Density Estimation (KDE)
+
+```
+f(x) = (1 / nh) Σ K( (x − xi) / h )
+```
+
+**Theory:**
+
+KDE:
+
+* Smooths probability distributions
+* Reveals activity peaks
+* Identifies usage clusters
+
+---
+
+## Pearson Correlation Coefficient
+
+```
+r = Σ[(xi − x̄)(yi − ȳ)] /
+    √[ Σ(xi − x̄)² Σ(yi − ȳ)² ]
+```
+
+**Interpretation**
+
+| Value | Meaning                      |
+| ----- | ---------------------------- |
+| +1    | Strong Positive Relationship |
+| 0     | No Relationship              |
+| -1    | Strong Negative Relationship |
+
+---
+
+## Boxplot Outlier Detection
+
+Outliers were detected using:
+
+```
+Lower Bound = Q1 − 1.5 × IQR
+Upper Bound = Q3 + 1.5 × IQR
+```
 
 ---
 
 # ⚙️ Step-by-Step Implementation
+
+---
 
 ## Step 1: Pre-processing
 
 * Removed duplicate records
 * Handled missing values
 * Validated logical relationships
-* Performed feature binning (Low, Medium, High usage groups)
+* Performed feature binning
+* Converted categorical values
 
 ---
 
 ## Step 2: Univariate & Bivariate Analysis
 
-* Analyzed distribution of subscription plans
+* Studied individual variable distributions
 * Compared churn vs non-churn users
-* Evaluated monthly fee and engagement patterns
+* Evaluated relationships between tenure, usage, and payment patterns
 
 ---
 
 ## Step 3: Advanced Visualization
 
-* **Violin Plots** — Usage distribution across plans
-* **Stacked Bar Charts** — Churn proportion by tenure
-* **Heatmaps** — Feature correlations
-* **Density Plots** — Behavioral activity patterns
+* Violin Plots — Usage density comparison
+* Stacked Bar Charts — Churn proportion analysis
+* Heatmaps — Feature relationships
+* KDE Plots — Distribution smoothing
 
 ---
 
@@ -178,22 +326,22 @@ Used for support-related variables using Median and IQR to reduce the impact of 
 
 # 🔍 Key Findings
 
-| Finding No. | Observation                                                            | Business Meaning                            |
-| ----------- | ---------------------------------------------------------------------- | ------------------------------------------- |
-| **1**       | Customers using **<5 hrs/week** show **~65.95% churn risk**            | Low engagement is strongest churn predictor |
-| **2**       | Multiple **payment failures** significantly increase churn probability | Payment friction impacts retention          |
-| **3**       | Users in **0–12 month tenure** churn more frequently                   | Early-stage customers need attention        |
-| **4**       | **30% drop in weekly usage** predicts churn risk                       | Early warning system possible               |
-| **5**       | Higher support tickets correlate with dissatisfaction                  | Indicates service experience issues         |
+| Finding No. | Observation                                                 | Business Meaning                            |
+| ----------- | ----------------------------------------------------------- | ------------------------------------------- |
+| **1**       | Customers using **<5 hrs/week** show **~65.95% churn risk** | Low engagement is strongest churn predictor |
+| **2**       | Payment failures significantly increase churn               | Payment friction impacts loyalty            |
+| **3**       | Users in **0–12 months tenure** churn more                  | New customers need attention                |
+| **4**       | **30% drop in usage** predicts churn risk                   | Early warning indicator                     |
+| **5**       | High support tickets correlate with dissatisfaction         | Service quality influences retention        |
 
 ---
 
 # 💡 Core Business Insights
 
-1. Customer churn is primarily driven by **reduced engagement** rather than pricing alone.
-2. **Payment-related friction** acts as a major catalyst for subscription cancellation.
-3. Early-stage users represent the **highest churn risk segment**.
-4. Behavioral tracking can significantly improve retention outcomes.
+1. Reduced usage is the primary indicator of customer disengagement.
+2. Payment issues act as a catalyst for subscription cancellation.
+3. Early-stage users are highly vulnerable to churn.
+4. Behavioral tracking enables proactive retention strategies.
 
 ---
 
@@ -202,4 +350,3 @@ Used for support-related variables using Median and IQR to reduce the impact of 
 The project successfully models the behavioral journey of a churn-prone customer, revealing a clear progression from declining engagement to payment-related issues, followed by inactivity and eventual subscription cancellation. The analysis highlights that customer churn is typically a gradual process influenced by reduced usage and unresolved transactional challenges rather than a sudden event. By identifying early warning indicators—particularly a weekly usage drop of 30% or more within the first year of subscription—the study emphasizes the importance of proactive monitoring systems. It is therefore recommended that businesses implement an automated "Red Flag" mechanism to detect such behavioral changes and trigger timely retention strategies such as personalized reminders, customer support outreach, or targeted incentives. Implementing these measures can significantly improve customer retention, enhance user satisfaction, and contribute to long-term business stability and revenue growth.
 
 ---
-
